@@ -8,9 +8,12 @@ namespace task01
     {
         static void Main(string[] args)
         {
-            TestExercise2();
+            TestExercise3();
         }
+        private static void TestExercise3()
+        {
 
+        }
         private static void TestExercise2()
         {
             String ciphertext = "LTTLQJHMHJSDSNUTRTHNZENAFYJQZRXPTSYWTQTZEIFOJOJONHMMJXQTOJXYJXYFQJGJEUJHSJKNWRFU" +
