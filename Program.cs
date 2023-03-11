@@ -8,8 +8,17 @@ namespace task01
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("TestExercise1");
+            TestExercise1();
+
+            Console.WriteLine("TestExercise2");
+            TestExercise2();
+
+            Console.WriteLine("TestExercise3");
+            TestExercise3();
+
+            Console.WriteLine("TestExercise4");
             TestExercise4();
-            
         }
 
         private static void TestExercise4()
@@ -22,6 +31,8 @@ namespace task01
             string plaintext = "SLUNECNEATEPLEPOCASICTVRTKEMPROZATIMKONCIVNASLEDUJICICHDVOUDNECHSEZATAHNEVETSINUUZEMIZASAHNEDESTNAHORACHANASEVEROVYCHODEVEVSECHPOLOHACHSNIHOVIKENDUBUDEPOLOJASNOTEPLOTYVNOCIKLESNOUPODNULUPRESDENBUDEMAXIMALNESESTSTUPNU";
             string groundTrueCipherText = "RTGNDKZEZBQPKMBOBIEIBBHRSSQMOZAZZBUMJWZCHDZARTQDTRUCHKTDUWGDMMOHRMLASITNDDQTRQZUTHQMHHMSZPZECMETMITOQIOHZVMSDDQRNDKCGWPEUMHSDKTPNTAHZKTSMQTOUQWEMLGBTLQPNTAJZAZOSMBLNBKVMWOIJTQSMWGPNLZUKCBRDAPEMJGDDUMXHUMLMMEERBETTXZU";
             string cipherText = VigenerCipherEncrypt(plaintext,key);
+            Console.WriteLine("Plain: " + plaintext);
+            Console.WriteLine("Cipher: " + cipherText);
 
             if(cipherText.Equals(groundTrueCipherText))
             {
@@ -92,17 +103,17 @@ namespace task01
 
             permutationGenerator.FindRandomPermutation(alphabet.ToArray(),n);
             
-            foreach(var item in alphabet)
-            {
-                Console.Write(item.ToString());
-            }
-            Console.WriteLine();
-            foreach(var item in permutationGenerator.randomCharPermutation)
-            {
-                Console.Write(item.ToString());
-            }
-            Console.WriteLine();
-            Console.WriteLine();
+            // foreach(var item in alphabet)
+            // {
+            //     Console.Write(item.ToString());
+            // }
+            // Console.WriteLine();
+            // foreach(var item in permutationGenerator.randomCharPermutation)
+            // {
+            //     Console.Write(item.ToString());
+            // }
+            // Console.WriteLine();
+            // Console.WriteLine();
 
             var cipherAlphabet = permutationGenerator.randomCharPermutation.ToArray();
             string plaintext = "AHOJTOHLEJETAJNAZPRAVA";
@@ -114,6 +125,9 @@ namespace task01
             string plaintext2 = SubstitutionCipherDecrypt(cipherText,cipherAlphabet);
             Console.WriteLine("Cipher: " + cipherText);
             Console.WriteLine("Plain: " + plaintext2);
+            Console.WriteLine();
+            Console.WriteLine();
+
         }
 
         private static string SubstitutionCipherDecrypt(string cipherText, char[] cipherAlphabet)
@@ -156,16 +170,23 @@ namespace task01
                 "WTYTUWNUWFANQFXUJHNFQSNITUQSJPITUWTMQNEJHJHMWTRJYJSUTPFEIJPIDEEFIFYJSJPIJSFNSYJWSJYZMJXQTEPTS" +
                 "YWTQZOJEIFSJSNAIFYFGFENPTRUWTRNYTAFSDHMMJXJQ";
 
-            int alphabetsize = 26;
-            for(int i = 1; i <= alphabetsize; i++)
-            {
-                String pt = CipherShiftDecrypt(ciphertext, i);
-                Console.WriteLine("Key: " + i);
-                Console.WriteLine("Plain: " + pt);
-                Console.WriteLine();
-                Console.WriteLine();
-            }
-
+            // BRUTE FORCING
+            // int alphabetsize = 26;
+            // for(int i = 1; i <= alphabetsize; i++)
+            // {
+            //     String pt = CipherShiftDecrypt(ciphertext, i);
+            //     Console.WriteLine("Key: " + i);
+            //     Console.WriteLine("Plain: " + pt);
+            //     Console.WriteLine();
+            //     Console.WriteLine();
+            // }
+            int i = 5;
+            String pt = CipherShiftDecrypt(ciphertext, i);
+            Console.WriteLine("Key: " + i);
+            Console.WriteLine("Plain: " + pt);
+            Console.WriteLine();
+            Console.WriteLine();
+            // key = 5
             // Plain: GOOGLECHCENYNIPOMOCIUZIVATELUMSKONTROLOUZDAJEJEJICHHESLOJESTESTALEBEZPECNEFIRMAPROTOPRIPRAVILASPECIALNIDOPLNEKDOPROHLIZECECHROMETENPOKAZDEKDYZZADATENEKDENAINTERNETUHESLOZKONTROLUJEZDANENIVDATABAZIKOMPROMITOVANYCHHESEL
         }
 
@@ -180,6 +201,8 @@ namespace task01
             String plaintext2 = CipherShiftDecrypt(ciphertext, key);
             Console.WriteLine("Cipher: " + ciphertext);
             Console.WriteLine("Plain: " + plaintext2);
+            Console.WriteLine();
+            Console.WriteLine();
         }
 
         private static string CipherShiftEncrypt(string plaintext, int key)
