@@ -27,6 +27,38 @@ namespace task01
             {
                 Console.WriteLine("SUCCESS");
             }
+
+            string plaintext2 = VigenerCipherDecrypt(cipherText,key);
+            Console.WriteLine("Cipher: " + cipherText);
+            Console.WriteLine("Plain: " + plaintext2);
+        }
+
+        private static string VigenerCipherDecrypt(string cipherText, string key)
+        {
+            //  P + T 
+            //  15 + 19 = 34 mod 26 = 8 (I)
+            // C = 8, K = 19, M = ?
+            // M + K mod 26 = C
+            // M + 19 mod 26 = 8
+            // 19 + 8 = 27 mod 26 = 1
+            // 19 - 8 = 11 mod 26 = 11
+            // 8 - 19 = -11 + 26 = 15 YES -> C - K + 26
+            StringBuilder plainText = new StringBuilder();
+
+            for (int i = 0; i < cipherText.Length; i++)
+            {
+                int letterIndex = i % key.Length;
+                // keyMappedToText.Append(key.ElementAt(letterIndex));
+
+                int keyLetterIndex = (int)key.ElementAt(letterIndex) - 'A';
+                int cipherLetterIndex = (int)cipherText.ElementAt(i) - 'A';
+                int plainTextLetterIndex = ((cipherLetterIndex - keyLetterIndex) + 26) % 26;
+                char plainTextLetter = (char)('A' + plainTextLetterIndex);
+                plainText.Append(plainTextLetter);
+
+            }
+            
+            return plainText.ToString();
         }
 
         private static string VigenerCipherEncrypt(string plaintext, string key)
